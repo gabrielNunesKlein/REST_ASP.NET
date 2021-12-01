@@ -1,8 +1,10 @@
+using _001_REST_API.NET_Criando_Projeto.Models.Context;
 using _001_REST_API.NET_Criando_Projeto.Services.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +30,10 @@ namespace _001_REST_API.NET_Criando_Projeto
         {
 
             services.AddControllers();
+
+            var connection = Configuration["MySqlConnection:MySqlConnectionString"];
+            services.AddDbContext<MySqlContext>(options => 
+                options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
 
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }

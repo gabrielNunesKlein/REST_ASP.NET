@@ -67,3 +67,10 @@ C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_P
 C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\obj\Debug\net5.0\ref\001_REST_API.NET_Criando_Projeto.dll
 C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\obj\Debug\net5.0\001_REST_API.NET_Criando_Projeto.pdb
 C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\obj\Debug\net5.0\001_REST_API.NET_Criando_Projeto.genruntimeconfig.cache
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\MySqlConnector.dll
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\gabri\Desktop\C#\Curso_ASP.NET\REST_ASP.NET\003_REST_API.NET_4_Verbos_Principais\001_REST_API.NET_Criando_Projeto\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
