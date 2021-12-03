@@ -1,5 +1,6 @@
+using _001_REST_API.NET_Criando_Projeto.Businnes.Implementation;
 using _001_REST_API.NET_Criando_Projeto.Models.Context;
-using _001_REST_API.NET_Criando_Projeto.Services.Implementation;
+using _001_REST_API.NET_Criando_Projeto.Repository.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,7 +38,8 @@ namespace _001_REST_API.NET_Criando_Projeto
 
             services.AddApiVersioning();
 
-            services.AddScoped<IPersonService, PersonServiceImplementation>();
+            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _001_REST_API.NET_Criando_Projeto.Services.Implementation
+namespace _001_REST_API.NET_Criando_Projeto.Businnes.Implementation
 {
-    public interface IPersonService
+    public interface IPersonBusiness
     {
         Person Create(Person person);
 

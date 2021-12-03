@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace _001_REST_API.NET_Criando_Projeto.Services.Implementation
+namespace _001_REST_API.NET_Criando_Projeto.Repository.Implementation
 {
-    public class PersonServiceImplementation : IPersonService
+    public class PersonRepositoryImplementation : IPersonRepository
     {
         private MySqlContext _context;
 
-        public PersonServiceImplementation(MySqlContext context)
+        public PersonRepositoryImplementation(MySqlContext context)
         {
             _context = context;
         }
@@ -82,7 +82,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Services.Implementation
             return person;
         }
 
-        private bool Exist(long id)
+        public bool Exist(long id)
         {
             return _context.Persons.Any(p => p.Id.Equals(id));
         }
