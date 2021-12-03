@@ -35,6 +35,8 @@ namespace _001_REST_API.NET_Criando_Projeto
             services.AddDbContext<MySqlContext>(options => 
                 options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
 
+            services.AddApiVersioning();
+
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }
 

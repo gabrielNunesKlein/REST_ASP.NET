@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LoOQV+5/PFp7tDx7lstNQjtoTlwSUK/UgAA8WSNY0tn/yXhYiOKbRDtsyqPAR+ErMEm38d5azOkoYtwnWrmYEw==",
+  "dgSpecHash": "DJ3jPBw6xrv8+kftdcnUszEW+yXVJzGiwY7KPzNsw6XobVRgJAPMFCu983hn6JtYFj2rmJD6CaBClSkmHcZFjQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gabri\\Desktop\\C#\\Curso_ASP.NET\\REST_ASP.NET\\003_REST_API.NET_4_Verbos_Principais\\001_REST_API.NET_Criando_Projeto\\001_REST_API.NET_Criando_Projeto.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gabri\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.5\\microsoft.entityframeworkcore.5.0.5.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.5\\microsoft.entityframeworkcore.abstractions.5.0.5.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.5\\microsoft.entityframeworkcore.analyzers.5.0.5.nupkg.sha512",
