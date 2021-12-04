@@ -1,7 +1,5 @@
 using _001_REST_API.NET_Criando_Projeto.Businnes.Implementation;
 using _001_REST_API.NET_Criando_Projeto.Models.Context;
-using _001_REST_API.NET_Criando_Projeto.Repository.Implementation;
-using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +14,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using _001_REST_API.NET_Criando_Projeto.Business;
+using _001_REST_API.NET_Criando_Projeto.Business.Implementation;
+using _001_REST_API.NET_Criando_Projeto.Repository;
+using _001_REST_API.NET_Criando_Projeto.Repository.Generic;
 
 namespace _001_REST_API.NET_Criando_Projeto
 {
@@ -51,7 +53,8 @@ namespace _001_REST_API.NET_Criando_Projeto
             services.AddApiVersioning();
 
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+            services.AddScoped<IBookBusiness, BookBusinessImplementation>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

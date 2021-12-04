@@ -17,5 +17,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Models.Context
         { }
 
         public DbSet<Person> Persons { get; set; }
+
+        public DbSet<Book> Books { get; set; }
     }
 }

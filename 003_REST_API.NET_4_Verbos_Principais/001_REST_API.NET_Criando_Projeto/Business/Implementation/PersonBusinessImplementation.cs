@@ -1,6 +1,6 @@
 ﻿using _001_REST_API.NET_Criando_Projeto.Models;
 using _001_REST_API.NET_Criando_Projeto.Models.Context;
-using _001_REST_API.NET_Criando_Projeto.Repository.Implementation;
+using _001_REST_API.NET_Criando_Projeto.Repository.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,9 @@ namespace _001_REST_API.NET_Criando_Projeto.Businnes.Implementation
 {
     public class PersonBusinessImplementation : IPersonBusiness
     {
-        private readonly IPersonRepository _repository;
+        private readonly IRepository<Person> _repository;
 
-        public PersonBusinessImplementation(IPersonRepository repository)
+        public PersonBusinessImplementation(IRepository<Person> repository)
         {
             _repository = repository;
         }
