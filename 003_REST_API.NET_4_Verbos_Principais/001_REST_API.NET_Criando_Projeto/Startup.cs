@@ -1,6 +1,7 @@
 using _001_REST_API.NET_Criando_Projeto.Businnes.Implementation;
 using _001_REST_API.NET_Criando_Projeto.Models.Context;
 using _001_REST_API.NET_Criando_Projeto.Repository.Implementation;
+using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +21,17 @@ namespace _001_REST_API.NET_Criando_Projeto
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public IWebHostEnvironment Environment { get; }
 
         public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
+        {
+            Configuration = configuration;
+            Environment = environment;
+
+            Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,7 +41,12 @@ namespace _001_REST_API.NET_Criando_Projeto
 
             var connection = Configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySqlContext>(options => 
-                options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
+                options.UseMySql(connection));
+
+            if (Environment.IsDevelopment())
+            {
+                MigrateDatabase(connection);
+            }
 
             services.AddApiVersioning();
 
@@ -60,6 +72,26 @@ namespace _001_REST_API.NET_Criando_Projeto
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void MigrateDatabase(string connection)
+        {
+            try
+            {
+                var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
+                var evolve = new Evolve.Evolve(evolveConnection, msg => Log.Information(msg))
+                {
+                    Locations = new List<string> { "db/migrations", "db/dataset" },
+                    IsEraseDisabled = true
+                };
+
+                evolve.Migrate();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Migrate falied", ex);
+                throw;
+            }
         }
     }
 }
