@@ -1,4 +1,5 @@
 ﻿using _001_REST_API.NET_Criando_Projeto.Businnes.Implementation;
+using _001_REST_API.NET_Criando_Projeto.Data.VO;
 using _001_REST_API.NET_Criando_Projeto.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -39,17 +40,17 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
+        public IActionResult Post([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
             return Ok(_personBusiness.Create(person));
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Person person)
+        public IActionResult Put([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
-            return Ok(_personBusiness.Update(person)); ;
+            return Ok(_personBusiness.Update(person));
         }
 
         [HttpDelete("{id}")]

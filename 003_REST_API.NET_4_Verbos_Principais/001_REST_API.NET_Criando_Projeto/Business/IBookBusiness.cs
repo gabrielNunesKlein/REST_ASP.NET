@@ -1,4 +1,5 @@
-﻿using _001_REST_API.NET_Criando_Projeto.Models;
+﻿using _001_REST_API.NET_Criando_Projeto.Data.VO;
+using _001_REST_API.NET_Criando_Projeto.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,13 @@ namespace _001_REST_API.NET_Criando_Projeto.Business
 {
     public interface IBookBusiness
     {
-        List<Book> FidAll();
+        List<BookVO> FidAll();
 
-        Book FindById(long id);
+        BookVO FindById(long id);
 
-        Book Create(Book book);
+        BookVO Create(BookVO book);
 
-        Book Update(Book book);
+        BookVO Update(BookVO book);
 
         void Delete(long id);
     }

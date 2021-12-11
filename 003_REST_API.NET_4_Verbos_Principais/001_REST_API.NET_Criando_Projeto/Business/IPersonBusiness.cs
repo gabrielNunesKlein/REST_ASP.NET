@@ -1,4 +1,5 @@
-﻿using _001_REST_API.NET_Criando_Projeto.Models;
+﻿using _001_REST_API.NET_Criando_Projeto.Data.VO;
+using _001_REST_API.NET_Criando_Projeto.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,13 @@ namespace _001_REST_API.NET_Criando_Projeto.Businnes.Implementation
 {
     public interface IPersonBusiness
     {
-        Person Create(Person person);
+        PersonVO Create(PersonVO person);
 
-        Person FindById(long id);
+        PersonVO FindById(long id);
 
-        List<Person> FindAll();
+        List<PersonVO> FindAll();
 
-        Person Update(Person person);
+        PersonVO Update(PersonVO person);
 
         void Delete(long id);
     }
