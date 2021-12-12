@@ -18,6 +18,7 @@ using _001_REST_API.NET_Criando_Projeto.Business;
 using _001_REST_API.NET_Criando_Projeto.Business.Implementation;
 using _001_REST_API.NET_Criando_Projeto.Repository;
 using _001_REST_API.NET_Criando_Projeto.Repository.Generic;
+using Microsoft.Net.Http.Headers;
 
 namespace _001_REST_API.NET_Criando_Projeto
 {
@@ -49,6 +50,14 @@ namespace _001_REST_API.NET_Criando_Projeto
             {
                 MigrateDatabase(connection);
             }
+
+            services.AddMvc(optioons =>
+            {
+                optioons.RespectBrowserAcceptHeader = true;
+
+                optioons.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+                optioons.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+            }).AddXmlSerializerFormatters();
 
             services.AddApiVersioning();
 
