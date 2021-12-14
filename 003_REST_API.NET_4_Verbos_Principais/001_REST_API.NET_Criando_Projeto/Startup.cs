@@ -19,6 +19,8 @@ using _001_REST_API.NET_Criando_Projeto.Business.Implementation;
 using _001_REST_API.NET_Criando_Projeto.Repository;
 using _001_REST_API.NET_Criando_Projeto.Repository.Generic;
 using Microsoft.Net.Http.Headers;
+using _001_REST_API.NET_Criando_Projeto.Hypermedia.Enricher;
+using _001_REST_API.NET_Criando_Projeto.Hypermedia.Filters;
 
 namespace _001_REST_API.NET_Criando_Projeto
 {
@@ -59,6 +61,11 @@ namespace _001_REST_API.NET_Criando_Projeto
                 optioons.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
             }).AddXmlSerializerFormatters();
 
+
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+            services.AddSingleton(filterOptions);
+
             services.AddApiVersioning();
 
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
@@ -83,6 +90,7 @@ namespace _001_REST_API.NET_Criando_Projeto
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
         }
 

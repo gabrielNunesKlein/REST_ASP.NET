@@ -1,5 +1,6 @@
 ﻿using _001_REST_API.NET_Criando_Projeto.Businnes.Implementation;
 using _001_REST_API.NET_Criando_Projeto.Data.VO;
+using _001_REST_API.NET_Criando_Projeto.Hypermedia.Filters;
 using _001_REST_API.NET_Criando_Projeto.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -26,12 +27,14 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
             return Ok(_personBusiness.FindAll());
         }
 
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
             var person = _personBusiness.FindById(id);
@@ -40,6 +43,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
@@ -47,6 +51,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();

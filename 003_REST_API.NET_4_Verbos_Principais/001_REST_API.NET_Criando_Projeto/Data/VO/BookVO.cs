@@ -1,11 +1,13 @@
-﻿using System;
+﻿using _001_REST_API.NET_Criando_Projeto.Hypermedia;
+using _001_REST_API.NET_Criando_Projeto.Hypermedia.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace _001_REST_API.NET_Criando_Projeto.Data.VO
 {
-    public class BookVO
+    public class BookVO : ISupportsHyperMedia
     {
         public long Id { get; set; }
 
@@ -16,5 +18,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Data.VO
         public decimal Price { get; set; }
 
         public string Title { get; set; }
+
+        public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
     }
 }

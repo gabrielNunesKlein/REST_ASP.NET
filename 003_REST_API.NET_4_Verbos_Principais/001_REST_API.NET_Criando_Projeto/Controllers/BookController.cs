@@ -1,5 +1,6 @@
 ﻿using _001_REST_API.NET_Criando_Projeto.Business;
 using _001_REST_API.NET_Criando_Projeto.Data.VO;
+using _001_REST_API.NET_Criando_Projeto.Hypermedia.Filters;
 using _001_REST_API.NET_Criando_Projeto.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,12 +26,14 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
             return Ok(_bookBusiness.FidAll());
         }
 
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
             var book = _bookBusiness.FindById(id);
@@ -40,6 +43,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody] BookVO book)
         {
             if (book == null) return BadRequest();
@@ -48,6 +52,7 @@ namespace _001_REST_API.NET_Criando_Projeto.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody] BookVO book)
         {
             if (book == null) return BadRequest();
