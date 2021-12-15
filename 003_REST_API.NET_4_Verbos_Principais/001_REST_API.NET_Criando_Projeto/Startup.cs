@@ -21,6 +21,8 @@ using _001_REST_API.NET_Criando_Projeto.Repository.Generic;
 using Microsoft.Net.Http.Headers;
 using _001_REST_API.NET_Criando_Projeto.Hypermedia.Enricher;
 using _001_REST_API.NET_Criando_Projeto.Hypermedia.Filters;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace _001_REST_API.NET_Criando_Projeto
 {
@@ -41,6 +43,13 @@ namespace _001_REST_API.NET_Criando_Projeto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add cors services
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
 
             services.AddControllers();
 
@@ -68,6 +77,23 @@ namespace _001_REST_API.NET_Criando_Projeto
 
             services.AddApiVersioning();
 
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "REST API s from azure whith ASP .NET Core 5 and Docker",
+                        Version = "v1",
+                        Description = "API Restful developed in curse",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Gabriel Klein",
+                            Url = new Uri("https://github.com/gabrielNunesKlein")
+                        }
+                    }); 
+            });
+
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
@@ -76,6 +102,7 @@ namespace _001_REST_API.NET_Criando_Projeto
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -85,13 +112,28 @@ namespace _001_REST_API.NET_Criando_Projeto
 
             app.UseRouting();
 
+            // confogure cors
+            app.UseCors();
+
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "REST API s from azure whith ASP .NET Core 5 and Docker - v1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+
+            app.UseRewriter(option);
         }
 
         private void MigrateDatabase(string connection)
